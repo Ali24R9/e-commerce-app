@@ -1,8 +1,27 @@
 Rails.application.routes.draw do
 
   root to: "home#index"
-  devise_for :admins
   devise_for :users
+
+  # devise_scope :admin do 
+  #   get "/login" => "devise/sessions#new"
+  # end
+  # devise_scope :admin do 
+  #   get "/logout" => "devise/sessions#destroy"
+  # end
+  devise_for :admins, controllers: { sessions: "admins/sessions" }
+  # as :admin do
+  #   get 'signin' => 'devise/sessions#new', :as => :new_admin_session
+  #   post 'signin' => 'devise/sessions#create', :as => :admin_session
+  #   delete 'signout' => 'devise/sessions#destroy', :as => :destroy_admin_session
+  # end
+  resources :admins, only: [:show]
+
+  # resources :items do 
+  #   collection { post :import }
+  # end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
