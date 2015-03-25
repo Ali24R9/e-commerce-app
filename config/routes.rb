@@ -17,9 +17,9 @@ Rails.application.routes.draw do
   # end
   resources :admins, only: [:show]
 
-  # resources :items do 
-  #   collection { post :import }
-  # end
+  resources :items do 
+    collection { post :import }
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
