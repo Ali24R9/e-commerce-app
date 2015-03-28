@@ -1,18 +1,24 @@
 <table>
   <tr>
     <th>User</th>
-    <th>Items</th> 
+    <th>Items Purchased</th> 
+    <th>Categories</th>
   </tr>
   <% @users.each do |user| %>
-  <tr>
-    <td><%= user.name %></td>
-    <td> 
-    <% user.items.each do |item| %>
-      <ul>
-        <li><%= item.name %></li>
-      </ul>
-    <% end %>
-    </td>
-  </tr>
+    <tr>
+      <td><%= link_to user.name, user_path(user) %></td>
+      <td> 
+        <% user.items.each do |item| %>
+          <ul>
+            <li><%= item.name %></li>
+              <ul>
+                <% item.categories.each do |category| %>
+                  <li><%= category.name %></li>
+                <% end %>
+              </ul>
+          </ul>
+        <% end %>
+      </td>
+    </tr>
   <% end %>
 </table>

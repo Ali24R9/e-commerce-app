@@ -1,0 +1,20 @@
+<h1><%= @user.name %></h1>
+
+<table>
+  <tr>
+    <th>Items Purchased</th> 
+    <th>Categories</th>
+  </tr>
+  <% @user.items.each do |item| %>
+    <tr>
+      <td> 
+        <%= item.name %>
+        <ul>
+          <% item.categories.each do |category| %>
+            <li><%= category.name %></li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  <% end %>
+</table>

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   #   delete 'signout' => 'devise/sessions#destroy', :as => :destroy_admin_session
   # end
   resources :admins, only: [:show]
-
+  resources :users, only: [:show]
   resources :items do 
     collection { post :import }
   end
