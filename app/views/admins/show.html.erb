@@ -1,24 +1,28 @@
 <table>
   <tr>
     <th>User</th>
-    <th>Items Purchased</th> 
-    <th>Categories</th>
   </tr>
   <% @users.each do |user| %>
     <tr>
-      <td><%= link_to user.name, user_path(user) %></td>
-      <td> 
-        <% user.items.each do |item| %>
-          <ul>
-            <li><%= item.name %></li>
-              <ul>
-                <% item.categories.each do |category| %>
-                  <li><%= category.name %></li>
-                <% end %>
-              </ul>
-          </ul>
-        <% end %>
-      </td>
+      <% if !user.items.empty? %>
+        <td><%= link_to user.name, user_path(user) %></td>
+        <td> 
+          <% user.items.each do |item| %>
+            <ul>
+              <p style="font-weight: bold; color: green"> Items: </p>
+              <li><%= item.name %></li>
+              <% if !item.categories.empty? %>
+                <ul>
+                  <p  style="font-weight: bold; color: blue"> Categories: </p>
+                  <% item.categories.each do |category| %>
+                    <li><%= category.name %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </ul>
+          <% end %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>

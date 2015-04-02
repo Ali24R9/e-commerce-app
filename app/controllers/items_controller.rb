@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   end 
 
   def import
-    Item.import(params[:file])
+    Item.import
     redirect_to root_url, notice: "Items imported"
   end
 

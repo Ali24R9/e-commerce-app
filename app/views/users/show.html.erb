@@ -3,18 +3,24 @@
 <table>
   <tr>
     <th>Items Purchased</th> 
-    <th>Categories</th>
   </tr>
-  <% @user.items.each do |item| %>
-    <tr>
-      <td> 
-        <%= item.name %>
-        <ul>
-          <% item.categories.each do |category| %>
-            <li><%= category.name %></li>
+  <% if !@user.items.empty? %>
+    <% @user.items.each do |item| %>
+      <tr>
+        <td> 
+          <%= item.name %>
+          <% if !item.categories.empty? %>
+            <ul>
+              <p  style="font-weight: bold; color: red"> Categories: </p>
+              <% item.categories.each do |category| %>
+                <li><%= category.name %></li>
+              <% end %>
+            </ul>
           <% end %>
-        </ul>
-      </td>
-    </tr>
+        </td>
+      </tr>
+    <% end %>
+  <% else %>
+    <p> This user has no items purchased </p>
   <% end %>
 </table>
